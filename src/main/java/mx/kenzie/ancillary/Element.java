@@ -15,32 +15,30 @@ public abstract class Element {
 
     public void load(File file) {
         if (file == null || !file.isFile()) return;
-        try {
-            this.load(new FileInputStream(file));
-        } catch (FileNotFoundException e) {
+        try (InputStream stream = new FileInputStream(file)) {
+            this.load(stream);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void load(InputStream stream) {
-        try (final Json json = new Json(stream)) {
-            json.toObject(this);
-        }
+        final Json json = new Json(stream);
+        json.toObject(this);
     }
 
     public void save(File file) {
         if (file == null || !file.isFile()) return;
-        try {
-            this.save(new FileOutputStream(file));
-        } catch (FileNotFoundException e) {
+        try (OutputStream stream = new FileOutputStream(file)) {
+            this.save(stream);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void save(OutputStream stream) {
-        try (final Json json = new Json(stream)) {
-            json.write(this, "\t");
-        }
+        final Json json = new Json(stream);
+        json.write(this, "\t");
     }
 
 }
