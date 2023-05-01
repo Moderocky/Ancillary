@@ -1,11 +1,13 @@
 package mx.kenzie.ancillary;
 
+import mx.kenzie.argo.meta.Optional;
+
 import java.io.File;
 
 public class MCMeta extends Element {
 
-    public final Meta meta = new Meta();
-    public final Pack pack = new Pack();
+    public @Optional Meta meta;
+    public @Optional Pack pack = new Pack();
 
     public MCMeta() {
     }
@@ -15,11 +17,11 @@ public class MCMeta extends Element {
     }
 
     public static class Meta {
-        public String game_version;
-        public String pack_resolution;
-        public int pack_type;
-        public String pack_version;
-        public String consists;
+        public @Optional String game_version;
+        public @Optional String pack_resolution;
+        public @Optional Integer pack_type;
+        public @Optional String pack_version;
+        public @Optional String consists;
     }
 
     public static class Pack {
