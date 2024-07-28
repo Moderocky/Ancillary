@@ -2,6 +2,7 @@ package mx.kenzie.ancillary;
 
 import mx.kenzie.grammar.Any;
 import mx.kenzie.grammar.Optional;
+import mx.kenzie.scribe.Component;
 
 import java.io.File;
 
@@ -39,29 +40,12 @@ public class MCMeta extends Element {
 
     public static class Overlays {
 
-        public @Any Entry[] entries = new Entry[0];
+        public Entry[] entries = new Entry[0];
 
-        public static abstract class Entry {
+        public static class Entry {
 
+            public @Any({int.class, int[].class, Support.class}) Object formats;
             public String directory;
-
-        }
-
-        public static class IntEntry extends Entry {
-
-            public int formats;
-
-        }
-
-        public static class ArrayEntry extends Entry {
-
-            public int[] formats;
-
-        }
-
-        public static class SupportEntry extends Entry {
-
-            public Support formats;
 
         }
 
@@ -79,8 +63,9 @@ public class MCMeta extends Element {
 
     public static class Pack {
 
-        public String description;
+        public @Any({String.class, Component.class}) Object description;
         public int pack_format;
+        public @Optional @Any({int.class, int[].class, Support.class}) Object supported_formats;
 
     }
 

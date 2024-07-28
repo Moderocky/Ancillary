@@ -28,7 +28,6 @@ public abstract class Element {
     }
 
     public void save(File file) {
-        if (file == null || !file.isFile()) return;
         try (OutputStream stream = new FileOutputStream(file)) {
             this.save(stream);
         } catch (IOException e) {
