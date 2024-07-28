@@ -1,6 +1,6 @@
 package mx.kenzie.ancillary;
 
-import mx.kenzie.argo.meta.Optional;
+import mx.kenzie.grammar.Optional;
 
 import java.io.File;
 import java.util.LinkedHashMap;
